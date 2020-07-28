@@ -32,6 +32,7 @@ export default {
   },
   data () {
     return {
+      totalQuestion: 5,
       questions: [],
       index: 0,
       numCorrect: 0,
@@ -40,7 +41,11 @@ export default {
   },
   methods: {
     next () {
-      this.index++
+      if (this.index < this.totalQuestion - 1) {
+        this.index++
+      } else {
+        alert(`${this.numCorrect} correct answer`)
+      }
     },
     previous () {
       this.index--
@@ -53,7 +58,7 @@ export default {
     }
   },
   mounted () {
-    fetch('https://opentdb.com/api.php?amount=5&type=multiple', {
+    fetch(`https://opentdb.com/api.php?amount=${this.totalQuestion}&type=multiple`, {
       method: 'get'
     })
       .then((response) => {

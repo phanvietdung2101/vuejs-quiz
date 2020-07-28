@@ -61,10 +61,6 @@ export default {
         this.shuffleAnswers()
       }
     }
-    // () {
-    //   this.selectedIndex = null
-    //   this.shuffleAnswers()
-    // }
   },
   methods: {
     selectAnswer (index) {
