@@ -1,6 +1,9 @@
 <template>
   <div id="App">
-    <Header />
+    <Header
+      :numCorrect="numCorrect"
+      :numTotal="numTotal"
+    />
 
     <b-container class="bv-example-row container">
       <b-row>
@@ -9,7 +12,7 @@
           v-if="questions.length"
           :currentQuestion="questions[index]"
           :next="next"
-          :previous="previous"
+          :increment="increment"
           />
         </b-col>
       </b-row>
