@@ -9,6 +9,7 @@
           v-if="questions.length"
           :currentQuestion="questions[index]"
           :next="next"
+          :previous="previous"
           />
         </b-col>
       </b-row>
@@ -37,6 +38,9 @@ export default {
   methods: {
     next () {
       this.index++
+    },
+    previous () {
+      this.index--
     },
     increment (isCorrect) {
       if (isCorrect) {

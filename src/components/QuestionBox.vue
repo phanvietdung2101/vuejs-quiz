@@ -11,12 +11,13 @@
           <b-list-group-item
             v-for="(answer, index) in answers"
             :key="index"
+            @click.prevent="selectAnswer(index)"
           >
             {{ answer }}
           </b-list-group-item>
         </b-list-group>
       </div>
-      <b-button variant="primary" >Do Something</b-button>
+      <b-button variant="primary" v-on:click="previous">Privious question</b-button>
       <b-button variant="success" v-on:click="next">Next question</b-button>
     </b-jumbotron>
   </div>
@@ -26,7 +27,13 @@
 export default {
   props: {
     currentQuestion: Object,
-    next: Function
+    next: Function,
+    previous: Function
+  },
+  data () {
+    return {
+      seletedIndex: null
+    }
   },
   computed: {
     answers () {
@@ -37,6 +44,7 @@ export default {
   },
   methods: {
     selectAnswer (index) {
+      this.seletedIndex = index
       console.log(index)
     }
   },
@@ -51,5 +59,8 @@ export default {
 }
 .btn {
   margin: 0 5px;
+}
+.list-group-item:hover {
+  background: #EEE;
 }
 </style>
